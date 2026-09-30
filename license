@@ -16,15 +16,17 @@ Permitted Uses:
 Prohibited Uses:
 4) Code from any Silver Star project MAY NOT be used as part of any directly monetized project.
   4a) Any project including Silver Star code must be offered, with no charge, to the general public, and all users must be afforded the same permissions as outlined above (clauses 1-3).
-
-Usage Requirements:
 5) Code from Silver Star projects may not be reused as part of a separate, publicly-released project.
   5a) Code may still be freely reused and modified in personal settings.
+  5b) This exclusively refers to lifting code from a Silver Star project's codebase and repurposing it within another codebase.
+  5c) See "Exemptions" for how this relates to the Silver Star Library project.
+
+Usage Requirements:
 6) If Silver Star code is included as part of a separate project, the same permissive rights as outlined above (clauses 1-3) must be granted to users of the separate project.
   6a) Inclusion of Silver Star code does not inherently grant SkeletonToast or the Silver Star team any rights or authority over the project at large, but rights are retained in regards to the Silver Star code.
 
 Exemptions:
-7) A special exemption is provided for the Silver Star Library project. This project may be modified, used, and redistributed in any capacity, provided clauses 5 and 6 are adhered to.
+7) A special exemption is provided for the Silver Star Library project. This project may be modified, used, and redistributed in any capacity, provided clauses 4 and 6 are adhered to.
   7a) If a standalone, modified version of the Silver Star Library is redistributed, it must include a clear, upfront link to the original Silver Star Library project page.
 8) SkeletonToast and the Silver Star team reserve the right to prohibit any individual, group, server, or any other entity from using Silver Star code in a public setting. This is at the SOLE DISCRETION of SkeletonToast and the Silver Star team.
   8a) The right to use Silver Star projects in personal or private settings is granted, provided all conditions of this License are followed, to all individuals.
