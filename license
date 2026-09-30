@@ -1,5 +1,5 @@
 This License dictates how all Silver Star projects and their code may and may not be used. Subject to change, without notice, at the sole discretion of the Silver Star team.
-Last updated 8/21/2026
+Last updated 9/29/2026
 
 Copyright © 2026 SkeletonToast
 SkeletonToast retains all trademark and patent rights to the Silver Star code.
@@ -11,17 +11,15 @@ Permitted Uses:
   1a) This clause DOES NOT allow unconditional redistribution of modified Silver Star projects.
 2) Any part of the Silver Star project can be modified and used in ANY capacity, as long as the modified code is not redistributed.
   2a) This means that no permission or special rights are necessary if this code is modified or incorporated into a larger project that is NOT being redistributed. This includes usage in multiplayer settings.
-3) Any part of the Silver Star project may be modified and redistributed as part of a separate project, PROVIDED clauses 5 and 6 (outlined under Usage Requirements) are adhered to.
+3) Silver Star projects can be freely added to modpacks, datapack collections, and any other collections, as long as they remain unedited.
 
 Prohibited Uses:
-4) Code from the Silver Star project MAY NOT be used as part of any directly monetized project.
+4) Code from any Silver Star project MAY NOT be used as part of any directly monetized project.
   4a) Any project including Silver Star code must be offered, with no charge, to the general public, and all users must be afforded the same permissions as outlined above (clauses 1-3).
 
 Usage Requirements:
-5) It is required, if Silver Star code is incorporated as part of a larger codebase, that a disclaimer is provided noting the use of Silver Star code.
-  5a) This disclaimer is recommended to be included in the project's base directory, and included with all public distributions of the project.
-  5b) A template is offered below for said disclaimer. This disclaimer must include a link to an updated project page of whatever Silver Star code was used.
-  5c) "This project includes code contributed from the Silver Star project, which can be found here: <link>."
+5) Code from Silver Star projects may not be reused as part of a separate, publicly-released project.
+  5a) Code may still be freely reused and modified in personal settings.
 6) If Silver Star code is included as part of a separate project, the same permissive rights as outlined above (clauses 1-3) must be granted to users of the separate project.
   6a) Inclusion of Silver Star code does not inherently grant SkeletonToast or the Silver Star team any rights or authority over the project at large, but rights are retained in regards to the Silver Star code.
 
