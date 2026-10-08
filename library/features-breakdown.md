@@ -124,26 +124,6 @@ All functions take `$(particle)`, `$(increment_distance)`, and `$(max_lifetime)`
 
 `raycast:raycast` takes 1 additional input parameter: `$(run_on_completion)`. This is the function which will be run when the ray either collides with a block, or expires. This function is unique, in that the function specified by `$(run_on_completion)` is run whether or not the ray collides with a block.
 
-
-## SSID
-The Silver Star Identifier, or SSID, is a numerical value that is assigned to entities, that essentially gives them a UUID that can be interacted with like a score. SSIDs are an evolution on the previous URID system, and as such, they replace URIDs, which are no longer supported. An SSID is a 9-digit number assigned upon request to any entity, which is stored as a scoreboard value, and cannot be used more than once, EVER, PER WORLD. They're assigned by running the following function as the entity to be assigned: `ssid:assign`
-
-Running the `ssid:assign` function on an entity that already has an assigned SSID will just terminate, so don't worry about overwriting SSIDs accidentally.
-
-SSIDs are meant to be used as a scoreboard-based identifier for entities, which also allows global data storage on a per-entity basis. If you pass their SSID through the Parse module, and use that to create/access a data storage location, this allows for complex (as in more than just scoreboards) storage, that will only be accessed by the right entity.
-
-SSIDs also support some fun developer features:
-- `ssid:request`
-- `ssid:reserve`
-- `ssid:reset`
-
-\
-`ssid:request` is used to request a specific number, if you as a developer have a number you like to use. Some numbers, including 1-99 and a couple others, have been reserved by default, for myself and some close friends. Using ssid:request, with your desired SSID input as `$(ssid)`, will either assign it to you, or return an error if it's already in use/reserved.
-
-`ssid:reserve` is used to reserve an SSID for an entity that may not currently exist. It takes two input macros: "player" and "ssid". "player" is typically a player's UUID, and "ssid" is self explanatory.
-
-`ssid:reset` will remove the SSIDs of all currently existing entities with the specified SSID, and will remove that SSID from the log of used SSIDs, allowing it to be used again later. This will remove the record of that SSID having been used, so only use this if you are CERTAIN that SSID is not in use.
-
 ## Custom Potion Effects / Elixir Framework
 Elixir is a module that sets up the framework necessary for fully custom potion effects, including stacking applications, which is difficult to do with just scores. The Elixir Framework lets you apply an effect at any time, and intelligently orders the active applications so that they match vanilla potion effects, e.g., the application with the highest amplifier is the one that's prioritized.
 
@@ -169,6 +149,25 @@ IMPORTANT: Both of these input parameters must have valid characters for the pur
 
 And this is all you have to do! Create your status and expire functions for each custom potion effect you want to create, run `elixir:custom/load_status` on load and `elixir:custom/tick_status` on every tick, and your potion effect is up and running.
 
+## SSID
+The Silver Star Identifier, or SSID, is a numerical value that is assigned to entities, that essentially gives them a UUID that can be interacted with like a score. SSIDs are an evolution on the previous URID system, and as such, they replace URIDs, which are no longer supported. An SSID is a 9-digit number assigned upon request to any entity, which is stored as a scoreboard value, and cannot be used more than once, EVER, PER WORLD. They're assigned by running the following function as the entity to be assigned: `ssid:assign`
+
+Running the `ssid:assign` function on an entity that already has an assigned SSID will just terminate, so don't worry about overwriting SSIDs accidentally.
+
+SSIDs are meant to be used as a scoreboard-based identifier for entities, which also allows global data storage on a per-entity basis. If you pass their SSID through the Parse module, and use that to create/access a data storage location, this allows for complex (as in more than just scoreboards) storage, that will only be accessed by the right entity.
+
+SSIDs also support some fun developer features:
+- `ssid:request`
+- `ssid:reserve`
+- `ssid:reset`
+
+\
+`ssid:request` is used to request a specific number, if you as a developer have a number you like to use. Some numbers, including 1-99 and a couple others, have been reserved by default, for myself and some close friends. Using ssid:request, with your desired SSID input as `$(ssid)`, will either assign it to you, or return an error if it's already in use/reserved.
+
+`ssid:reserve` is used to reserve an SSID for an entity that may not currently exist. It takes two input macros: "player" and "ssid". "player" is typically a player's UUID, and "ssid" is self explanatory.
+
+`ssid:reset` will remove the SSIDs of all currently existing entities with the specified SSID, and will remove that SSID from the log of used SSIDs, allowing it to be used again later. This will remove the record of that SSID having been used, so only use this if you are CERTAIN that SSID is not in use.
+
 ## Scores / Smart Score "Fetching"
 SSL adds a wide array of scores that cover entity data, condition, location, and more. These scores can be called as needed through a group of "fetch" functions, which have a built-in check for whether they've already been called in the same tick. This drastically increases efficiency compared to calculating scores every tick, because it allows scores to only be calculated when necessary, and means that there won't be redundant calculations.
 
@@ -188,13 +187,16 @@ Fetch functions can be found in:\
 **A note** about `ss_lib:fetch/in_water`, which sets the score `InWater`: `InWater` is set to 1 if the player is touching water at all, and it's set to 2 if the entity is fully underwater, as in, they're swimming, or the block at their eye level is water. Of course, it will be set to 0 if the entity is not touching water at all.
 
 ## Math Module
+<details>
+    <summary>Round Function</summary>
 
-### Round Function
 The Rounding sub-module is used to increase precision of scores when they're divided. By default, Minecraft will always round quotients of two scores down to the nearest integer. However, the Rounding module will properly round these values instead of rounding them down every time.
 
 The rounding module is pretty straightforward. It takes three input parameters: `score`, which is the scoreboard objective that will be rounded for the executing entity, `round`, which is the divisor for rounding purposes, and `reduce`, which is a boolean that determines whether or not to divide the rounded number by `round` at the end of calculation. If you want to round `score` to the nearest multiple of 7, for example, set `round` to 7. If you want this value to be divided by 7, set `reduce` to `true`, and otherwise, set `reduce` to `false`.
+</details>
 
-### Other Functions
+<details>
+    <summary>Other Functions</summary>
 
 **Exponent Functions**\
 Two new exponent functions are added, namely: `math:power/integer` and `math:power/score`. `math:power/integer` takes two input parameters, `$(base_score)` and `$(exponent)`.
@@ -209,6 +211,16 @@ Note: An input score with a value of 0 will still return 1 digit.
 
 **Even Function**\
 The function `math:even` is added, which will round the input score to an even number, if it is not already even. It takes two input parameters: `$(score)` and `$(sign)`. `$(score)` is the name of the scoreboard objective that will be modified, and `$(sign)` is a string that must be either `"-"` or `"+"`. This parameter specifies whether the function will round up or down.
+
+**Chance Functions**\
+Two chance functions are added: `chance:percentage` and `chance:score`. These have a random chance to trigger your specified function, and the probability of the function triggering depends on your input.
+
+`chance:percentage` takes two inputs: `$(value)` and `$(function)`. `$(value)` is a float from 0.00 to 1.00, which determines the likelihood of `$(function)` triggering. `$(function)` should be the name of a function, obviously.
+
+Similarly, `chance:score` does the same thing, only using a score instead of a hard value. This function takes three inputs: `$(score)`, a scoreboard objective, `$(max_value)`, which is an integer to compare the value of `$(score)` against, and `$(function)`, which is the name of whatever function will be triggered, if the chance succeeds. As an example, if your objective specified by `$(score)` has a value of 15, and you input a value of 30 for `$(max_value)`, then `$(function)` will have a 15/30 chance of triggering, or 50%.
+
+Although `chance:percentage` is extremely basic code, I found it helpful to have a shorthand. Plus, `chance:score` needed some sort of function to pass the parsed value to.
+</details>
 
 ## Run Module
 The Run module is a developer tool for discreet command execution, and easy command repetition. The Run module allows you to specify what command to run and how many times to run it, and in any server console or chat log, the only message displayed will be that the Run function was called. Generally, the specific command that was run will not be displayed.
@@ -246,19 +258,3 @@ Items are designated as Quick Destroy just by adding `quick_destroy:true` to the
 SSL adds in a Particles module, which is just a group of preset particle effects. Most of these effects come from old personal projects, so there's not much of a theme to them. However, they are used for the Quick Destroy module.
 
 This module can be safely removed if you don't care about quick destroy items having a particle effect; as nothing else uses the Particles module.
-
-## Roadmap - Planned Changes
-- Optimize and polish circle module
-- Port over now-defunct statuses to Elixir
-- Additional math module functions
-    - In version 26.3, Mojang added more math capabilities with data storage, including square root calculation, sin/cos/tan, and a couple others. Since these functions aren't currently compatible with scoreboard objectives, additional math functions will be added to SSL that allow these calculations to be performed on scores, as well as stored data.
-- Distance calculation module
-    - Using the square root function added in the math module update, SSL will also be able to calculate the distance between two points by finding the hypotenuse of a "triangle" drawn between those two points. Although it's currently possible for selectors to filter by entities' distance from the executing location, there's no easy way to compute and store the exact distance itself, which is what this module aims to fix.
-- Actionbar title queueing
-    - Using the current actionbar system, this modification will allow actionbar titles to be "queued", meaning they're stored, and displayed as soon as the previous actionbar's duration runs out. This will allow for better use of the actionbar system.
-- Collisions module
-    - This module will provide functions that can be invoked at any location, to see if that location is directly colliding with a block. The current method for block detection will give a false positive if there is a block at the executing coordinates, even if that block isn't actually colliding with the specific sub-coordinates.
-    - This will be used in the raycast module to allow for significantly more precise raycasting.
-
-## Silver Star Library
-This is a project I've been working on for a long time, and I've found it very helpful in my datapack projects. I hope you find it to be just as useful.
