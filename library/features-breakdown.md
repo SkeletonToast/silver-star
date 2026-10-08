@@ -452,6 +452,17 @@ The `run:recur` function takes two input parameters, `$(f)` and `$(r)`. `$(f)` i
 
 The `run:recur_macro` function takes two input parameters: `$(function)` and `$(r)`. `function` is the name of a valid function, for example, `example:function`. `$(r)` is, of course, the number of times to run this function. However, with each time this function is run, the value of `$(r)` is passed as an input parameter to the specified function, as the input parameter `$(value)`. Please note, `$(r)` starts at 0, not 1.
 
+## Scheduled Functions
+SSL provides four scheduled functions by default: `ss_lib:scheduled/10t`, `ss_lib:scheduled/20t`, `ss_lib:scheduled/40t`, and `ss_lib:scheduled/10s`. These functions are first run upon load, and then run at regular increments indefinitely afterward.
+
+`ss_lib:scheduled/10t` is run every 10 ticks (every 0.5 seconds), and it only invokes one function by default: `ss_lib:fetch/location`.
+
+`ss_lib:scheduled/20t` is run every 20 ticks (every second), and in versions 26.10.08 and earlier, it only invokes one function by default: `ss_lib:generic_scores`. In later versions, it does not run any code by default.
+
+`ss_lib:scheduled/40t` is run every 40 ticks (every 2 seconds), and it does not run any code by default.
+
+`ss_lib:scheduled/10s` is run every 10 seconds, and it does not run any code by default.
+
 ## Action Tags
 SSL adds a handful of functionalities for "action tags", tags that are applied to an entity to perform code that isn't easily executable with commands. There are currently three action tags:
 
