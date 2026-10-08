@@ -386,6 +386,25 @@ Weapon materials:
 `ss_lib:fetch/on_ground` fetches the entity's OnGround score, a boolean indicating whether or not the entity is on the ground. By default, this function is invoked every tick in `ss_lib:fetch_configuration`.
 </details>
 
+## Gamerule Module
+This is a system designed to simulate vanilla gamerules, allowing developers to set global gamerules that they can change at will, and reference when needed. This is a good way to keep track of backend settings that apply to the world at large.
+
+Three functions exist, that should be referenced by any datapack using the Gamerule module. These are: `gamerule:custom/load`, `gamerule:custom/tick_bool`, and `gamerule:custom/tick_range`. Their functions are detailed below:
+
+`gamerule:custom/load` should be run upon load, for each individual gamerule you want to add, regardless of whether they're boolean or range-based. It takes 3 input parameters: `$(source)`, `$(gamerule)`, and `$(default)`. `$(source)` should be your datapack's namespace, or an abbreviation representing it, just to establish where the gamerule comes from; for example, it might be "coolawesomepack" or just "cap" for short. `$(gamerule)` is the identifier for your gamerule. Maybe your datapack optionally lets players teleport to others, so your gamerule might be `teleport_enabled` (boolean) or `teleport_range` (range-based). `$(default)` is the default value of the gamerule.
+
+`gamerule:custom/tick_bool` should be run every tick, for all custom gamerules that are boolean (true or false). It takes two input parameters, `$(source)` and `$(gamerule)`. They're used the same way as defined above, in the section about `gamerule:custom/load`.
+
+`gamerule:custom/tick_range` should be run every tick, for all custom gamerules that accept values in a set range, for example, 0-100. It takes four input parameters: `$(source)`, `$(gamerule)`, `$(lower_limit)`, and `$(upper_limit)`. `$(source)` and `$(gamerule)` are used the same way as defined above, in the section about `gamerule:custom/load`. `$(lower_limit)` is an integer equal to the lowest valid value for your gamerule, in this example, that'd be `0`. `$(upper_limit)` is an integer equal to the highest valid value, in this example, `100`.
+
+All input parameters must be valid for scoreboard objectives, as in, no spaces and minimal special characters.
+
+And that's all you have to do: run `gamerule:custom/load` upon load, and `gamerule:custom/tick_<bool or range>` every tick, for each of your custom gamerules. To change any gamerule, run the command: `trigger <source>.gamerule.<gamerule> set <value>`.
+
+Running this without specifying the value (as in, just `trigger <score>`) will toggle boolean parameters, but will just set range-based gamerules to their minimum value. This is an unfortunate side effect that I don't currently have a way to work around. There's no good way to track if a player intentionally triggered the gamerule score, or they just weren't online the last time the gamerule was updated, and thus their score is outdated.
+
+Players with an ssl.permissions.level score of 4 or higher can also run the command `/trigger ssl.gamerule.query` to see a list of SSL-base gamerules across all datapacks, their type, their range if applicable, and their current value.
+
 ## Math Module
 <details>
     <summary>Round Function</summary>
