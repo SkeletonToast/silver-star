@@ -146,23 +146,40 @@ Elixir is written in a way so that it can be easily accessed and used by other d
 
 For example, one of the preset effects, or "statuses" for clarity, is called Lightweight. The active function applies attributes that reduce gravity and knockback resistance, and the expire function removes these attributes.
 
+A handful of preset statuses come with SSL. Feel free to use them, or delete them if you're not going to use them.
+
+### Clearing Statuses
+Elixir has two functions related to clearing statuses: `elixir:clear_status` and `elixir:clear_all_statuses`. `elixir:clear_status` takes input parameters of `$(source)` and `$(status)`, and is used to clear a single status. `elixir:clear_all_statuses` needs no input parameters, and will clear ALL Elixir status effects. This means all status effects, from all installed datapacks, that use Elixir.
+
+Elixir also adds a single gamerule (using the SSL gamerule module, of course): `elixir.gamerule.milk_clear_statuses`. It's set to true by default. When set to true, drinking a milk bucket will clear all Elixir statuses, similar to how it clears all potion effects in vanilla.
+
 <details>
   <summary>Custom Status Effects</summary>
 
 To add your own status effects, you'll need to run two functions for each effect: `elixir:custom/load_status` and `elixir:custom/tick_status`. As the names indicate, `load_status` only needs to be run once, and it creates all the scores necessary to run your custom effect, and `tick_status` MUST be run on every tick (or the status timer will be inaccurate).
 
-`elixir:custom/load_status` takes two input parameters: `source` and `status`. `source` should be the name of YOUR datapack, or a nickname, anything that will identify where the status is defined. For example, the premade statuses use `elixir` as the input for `source`. `status`, on the other hand, should be the name of the effect itself; for example, `lightweight` or `frostbite` or whatever.
+`elixir:custom/load_status` takes two input parameters: `$(source)` and `$(status)`. `$(source)` should be the name of YOUR datapack, or a nickname, anything that will identify where the status is defined. For example, the premade statuses use `elixir` as the input for `$(source)`. `$(status)`, on the other hand, should be the name of the effect itself; for example, `lightweight` or `frostbite` or whatever.\
+If you want your status to have a maximum amplifier, you can use the function `elixir:custom/load_status_max_amplifier` instead.
 
 The scores added are `$(source).$(status).duration`, `$(source).$(status).amplifier`, and `$(source).$(status).stored_amplifier`. You probably won't ever need to reference these yourself.
 
 IMPORTANT: Both of these input parameters must have valid characters for the purpose of creating scoreboard objectives. Essentially, no spaces, and no custom characters that you couldn't have in the name of another scoreboard objective.
 
-`elixir:custom/tick_status` takes four input parameters: `source`, `status`, `status_function`, and `expire_function`. `source` and `status` are used identically to how they're used in `elixir:custom/load_status`.
-`status_function` is the name of the function that contains the actual effects of your custom potion effect. For example, the premade status "lightweight" uses `elixir:status/lightweight/main` for its status function. The status function will be run on every tick for every entity that has an active application of your status.
+`elixir:custom/tick_status` takes four input parameters: `source`, `status`, `status_function`, and `expire_function`. `source` and `status` are used identically to how they're used in `elixir:custom/load_status`.\
+`status_function` is the name of the function that contains the actual effects of your custom potion effect. For example, the premade status "lightweight" uses `elixir:status/lightweight/main` for its status function. The status function will be run on every tick for every entity that has an active application of your status.\
+Immediately before invoking the `status_function` function, Elixir assigns a score to the executing entity: `elixir.generic.amplifier`. This is equal to their current amplifier for that status, plus one. This value can be used as a score that can be referenced when applying the status' effects, and it can be freely modified as you see fit. It's re-set to the proper value immediately before every status function,
 
 `expire_function` is the name of the function that will be run whenever an application expires, INCLUDING when a higher-amplifier application expires and is replaced by a lower-amplifier application. This should include any code that is run, well, whenever an application expires.
 
 And this is all you have to do! Create your status and expire functions for each custom potion effect you want to create, run `elixir:custom/load_status` on load and `elixir:custom/tick_status` on every tick, and your potion effect is up and running.
+
+### "Monolevel" Statuses
+Elixir also has functionality for what I call "monolevel" statuses, which are statuses with only one effective amplifier. They're akin to vanilla potion effects like Night Vision, which has the same effect no matter what the amplifier is. Although it's trivial to set up your own "monolevel" statuses with a single score, I wanted a system in place to add my own monolevel statuses through Elixir, and I thought it might be useful to have all custom potion effects centralized in Elixir.\
+Four functions exist relating to monolevel statuses: `elixir:custom/monolevel/load_status`, `elixir:custom/monolevel/tick_status`, `elixir:custom/monolevel/tick_status_nonplayer`, and `elixir:apply_monolevel`. The first three take identical input parameters to their equivalent non-monolevel functions. `elixir:apply_monolevel` is not actually required if you're trying to apply a monolevel status, as `elixir:apply` still works (and now accounts for monolevel statuses, so it won't try to use unnecessary data storage), but it's recommended to just use `elixir:apply_monolevel` if you know the status you're applying is, in fact, monolevel.
+- `elixir:apply` might also be useful if you're running a function that takes the status as an input, so you don't know whether or not the function is monolevel or not, just from knowing the name of it. `elixir:apply` is infinitesimally less efficient, as it does access storage to detect whether or not a status is monolevel, but this will have virtually no impact on the pack's performance.
+- `elixir:apply_monolevel` takes three input parameters: `$(source)`, `$(status)`, and `$(duration)`. These are used in the same way as in `elixir:apply`, but as a refresher: `$(source)` is an identifying string for your datapack (for example, "elixir" or "abc" or "pack2"), which shows where the status came from. `$(status)` is the name of the status (for example, "frostbite" or "sleep" or whatever). `$(duration)` is an integer representing how many ticks this application will last for.
+  - As aforementioned, `elixir:apply` works just fine for applying monolevel statuses (you just need an extra input parameter, `$(amplifier)`), but `elixir:apply_monolevel` is definitely recommended where possible.
+- Honestly, `elixir:apply_monolevel` isn't even required if you know you're not going to be applying the status to any non-players. You can just change the `source.status.duration` score directly. This is fine, and even encouraged, but just remember that this only works for player-exclusive statuses. Otherwise, entities won't be properly tagged, and they'll never execute the status function.
 </details>
 
 ## SSID
