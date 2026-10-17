@@ -469,6 +469,27 @@ Similarly, `math:chance/score` does the same thing, only using a score instead o
 Although `math:chance/percentage` is extremely basic code, I found it helpful to have a shorthand. Plus, `math:chance/score` needed some sort of function to pass the parsed value to.
 </details>
 
+## Action Tags
+SSL adds a handful of functionalities for "action tags", tags that are applied to an entity to perform code that isn't easily executable with commands. There are currently three action tags:
+
+For SSL versions 26.09.22 or earlier:\
+`Extinguished`, `Pacified`, and `FallDamageNegated`
+
+For SSL versions later than 26.09.22:\
+`ssl.action.extinguish`, `ssl.action.pacify`, and `ssl.action.negate_fall_damage`
+
+The extinguish tag will immediately extinguish any entity that's currently on fire. The pacify tag will de-aggro any hostile mob, though they might re-aggro immediately if there's a target in range. The fall damage negation tag will prevent that entity from taking any fall damage the next time they touch the ground, though be aware: if this tag is applied to an entity that's currently on the ground, it will be immediately removed and have no effect.
+
+All action tags only trigger once before they must be re-applied. To trigger these behaviors, all you need to do is apply your desired tag (`/tag <target> add <tag>`) to the entity you want to affect.
+
+## Auto-Whitelist
+The Auto-Whitelist function is a way to prevent developers from accidentally banning, blacklisting, or de-oping themselves from a server. It can be found in the ss_lib:_load function. Replacing the template username with your username will ensure that your account continues to have the correct permissions tied to it.
+
+## Quick Destroy Items
+SSL adds in a module that allows items to be designated as "quick destroy" items. These items, when dropped on the ground, will disintegrate after five seconds.
+
+Items are designated as Quick Destroy just by adding `quick_destroy:true` to the custom item data.
+
 ## Run Module
 The Run module is a developer tool for discreet command execution, and easy command repetition. The Run module allows you to specify what command to run and how many times to run it, and in any server console or chat log, the only message displayed will be that the Run function was called. Generally, the specific command that was run will not be displayed.
 
@@ -490,27 +511,6 @@ SSL provides four scheduled functions by default: `ss_lib:scheduled/10t`, `ss_li
 `ss_lib:scheduled/40t` is run every 40 ticks (every 2 seconds), and it does not run any code by default.
 
 `ss_lib:scheduled/10s` is run every 10 seconds, and it does not run any code by default.
-
-## Action Tags
-SSL adds a handful of functionalities for "action tags", tags that are applied to an entity to perform code that isn't easily executable with commands. There are currently three action tags:
-
-For SSL versions 26.09.22 or earlier:\
-`Extinguished`, `Pacified`, and `FallDamageNegated`
-
-For SSL versions later than 26.09.22:\
-`ssl.action.extinguish`, `ssl.action.pacify`, and `ssl.action.negate_fall_damage`
-
-The extinguish tag will immediately extinguish any entity that's currently on fire. The pacify tag will de-aggro any hostile mob, though they might re-aggro immediately if there's a target in range. The fall damage negation tag will prevent that entity from taking any fall damage the next time they touch the ground, though be aware: if this tag is applied to an entity that's currently on the ground, it will be immediately removed and have no effect.
-
-All action tags only trigger once before they must be re-applied. To trigger these behaviors, all you need to do is apply your desired tag (`/tag <target> add <tag>`) to the entity you want to affect.
-
-## Auto-Whitelist
-The Auto-Whitelist function is a way to prevent developers from accidentally banning, blacklisting, or de-oping themselves from a server. It can be found in the ss_lib:_load function. Replacing the template username with your username will ensure that your account continues to have the correct permissions tied to it.
-
-## Quick Destroy Items
-SSL adds in a module that allows items to be designated as "quick destroy" items. These items, when dropped on the ground, will disintegrate after five seconds.
-
-Items are designated as Quick Destroy just by adding `quick_destroy:true` to the custom item data.
 
 ## Particles
 SSL adds in a Particles module, which is just a group of preset particle effects. Most of these effects come from old personal projects, so there's not much of a theme to them. However, they are used for the Quick Destroy module.
