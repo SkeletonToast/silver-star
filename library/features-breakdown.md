@@ -201,6 +201,7 @@ The reason these Fetch functions exist is so that they can be called at any time
 The Fetch module adds the following functions:
 - `ss_lib:fetch/absorption`
 - `ss_lib:fetch/health`
+- `ss_lib:fetch/health_attributes`
 - `ss_lib:fetch/armor`
 - `ss_lib:fetch/attack_damage`
 - `ss_lib:fetch/attack_speed`
@@ -209,7 +210,8 @@ The Fetch module adds the following functions:
 - `ss_lib:fetch/in_water`
 - `ss_lib:fetch/is_sprinting`
 - `ss_lib:fetch/item_selected`
-- `ss_lib:fetch/locTation`
+- `ss_lib:fetch/location`
+- `ss_lib:fetch/coordinates`
 - `ss_lib:fetch/moon_phase`
 - `ss_lib:fetch/on_ground`
 - `ss_lib:fetch/using_bow`
@@ -243,7 +245,9 @@ If you have any other Silver Star datapacks installed, it is strongly recommende
 **Health and Absorption**\
 `ss_lib:fetch/absorption` assigns the entity's Absorption score, reflecting how many points of Absorption health they currently have. It also requires `$(bypass_check)` as an additional input parameter.
 
-`ss_lib:fetch/health` assigns the entity's Health score, which reflects their health points, rounded to the nearest integer. It also assigns their BaseMaxHealth score, which reflects the player's base max_health attribute. Finally, it assigns their Absorption score. Be aware, this function will always have `$(bypass_check)` set to true when it runs `ss_lib:fetch/absorption`.
+`ss_lib:fetch/health` assigns the entity's Health score, which reflects their health points, rounded to the nearest integer. It also invokes `ss_lib:fetch/absorption` to assign their Absorption score. It also requires `$(bypass_check)` as an additional input parameter.
+
+`ss_lib:fetch/health_attributes` assigns the entity's MaxHealth and BaseMaxHealth scores, which represent their current max_health attribute, and their base max_health attribute, respectively. It also requires `$(bypass_check)` as an additional input parameter.
 
 **Armor**\
 `ss_lib:fetch/armor` assigns ArmorType, ArmorToughness, ArmorWeight, and Armorless. A score for Armor exists, though it's automatically assigned on every tick.
@@ -288,7 +292,7 @@ By default, this function is invoked every tick in `ss_lib:fetch_configuration`.
 `ss_lib:fetch/item_selected` is used to set a player's ItemSelected and ItemOffhand scores. These scores are boolean. ItemSelected is set to 1 if the player has any item in their mainhand, ItemOffhand is set to 1 if the player has any item in their offhand, and these scores are set to 0 if there is no item in the relevant slot.
 
 **Location**\
-`ss_lib:fetch/location` assigns an entity's xcoord, ycoord, zcoord, and Dimension scores. Please note that xcoord, ycoord, and zcoord are assigned at a scale of 1, so they're just integers representing the entity's general coordinates, and they're rounded down. For example, an entity at the precise location 10.56, 68.90, 12.03 would have an xcoord score of 10, ycoord score of 68, and zcoord score of 12.
+`ss_lib:fetch/location` assigns an entity's Dimension score, and uses `ss_lib:fetch/coordinates` to assign their xcoord, ycoord, and zcoord scores as well.
 
 The Dimension score is assigned as below:
 - Overworld: set to 1
@@ -296,6 +300,9 @@ The Dimension score is assigned as below:
 - End: set to 3
 
 This function is invoked by `ss_lib:scheduled/10t`, meaning it is automatically run every 10 ticks, or every 0.5 seconds.
+
+**Coordinates**\
+`ss_lib:fetch/coordinates` assigns an entity's xcoord, ycoord, and zcoord scores. Please note that xcoord, ycoord, and zcoord are assigned at a scale of 1, so they're just integers representing the entity's general coordinates, and they're rounded down. For example, an entity at the precise location 10.56, 68.90, 12.03 would have an xcoord score of 10, ycoord score of 68, and zcoord score of 12.
 
 **Moon Phase**\
 `ss_lib:fetch/moon_phase` does not set any specific entity's score; rather, it sets the score `value` for the phantom player `$moon_phase`.
@@ -388,6 +395,10 @@ Weapon materials:
 
 ## Gamerule Module
 This is a system designed to simulate vanilla gamerules, allowing developers to set global gamerules that they can change at will, and reference when needed. This is a good way to keep track of backend settings that apply to the world at large.
+
+To reference a gamerule, once it's been instantiated, reference the score `true` (for boolean gamerules) or `value` (for range-based gamerules), held by the phantom player `$source.gamerule.gamerule_name`. Of course, replace "source" and "gamerule_name" with the relevant information for your gamerule. This might look like:
+
+`execute if score $awesomepack.gamerule.pvp_enabled run...`
 
 Three functions exist, that should be referenced by any datapack using the Gamerule module. These are: `gamerule:custom/load`, `gamerule:custom/tick_bool`, and `gamerule:custom/tick_range`. Their functions are detailed below:
 
