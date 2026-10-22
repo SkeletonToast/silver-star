@@ -454,32 +454,44 @@ Running this without specifying the value (as in, just `trigger <score>`) will t
 Players with an ssl.permissions.level score of 4 or higher can also run the command `/trigger ssl.gamerule.query` to see a list of SSL-base gamerules across all datapacks, their type, their range if applicable, and their current value.
 
 ## Math Module
-<details>
-    <summary>Round Function</summary>
+The Math module introduces a variety of functions designed to make score manipulation easier.
 
+<details>
+    <summary>Functions</summary>
+
+### Rounding Functions
 The Rounding sub-module is used to increase precision of scores when they're divided. By default, Minecraft will always round quotients of two scores down to the nearest integer. However, the Rounding module will properly round these values instead of rounding them down every time.
 
-The rounding module is pretty straightforward. It takes three input parameters: `score`, which is the scoreboard objective that will be rounded for the executing entity, `round`, which is the divisor for rounding purposes, and `reduce`, which is a boolean that determines whether or not to divide the rounded number by `round` at the end of calculation. If you want to round `score` to the nearest multiple of 7, for example, set `round` to 7. If you want this value to be divided by 7, set `reduce` to `true`, and otherwise, set `reduce` to `false`.
-</details>
+The Round module includes the following functions:\
+    - `math:round/int`
+    - `math:round/score`
+    - `math:round/up/int`
+    - `math:round/up/score`
+    - `math:round/down/int`
+    - `math:round/down/score`\
+These functions ONLY round a number to the nearest multiple of the specified round value. They all take two input parameters: `$(score)` and `$(round)`. For the "int" functions, `$(round)` should be an integer, and for the "score" functions `$(round)` should be a scoreboard objective. `$(score)` is rounded to the nearest multiple of `$(round)`. You can also choose to round up or down, using the "round/up" or "round/down" functions.
 
-<details>
-    <summary>Other Functions</summary>
+### Division Functions
+By default, when Minecraft is performing division that will result in a fractional value, it just drops the fractional part and rounds down to the nearest integer. The division functions allow for division that, instead, properly rounds the number, including rounding up. It includes two functions:\
+    - `math:divide/int`
+    - `math:divide/score`
+These both take two input parameters: `$(score)` and `$(div)`. These functions round `$(score)` to the nearest multiple of `$(div)` AND THEN divide it by `$(div)`. For `math:divide/int`, `$(div)` should be an integer, and for `math:divide/score`, `$(div)` should be a scoreboard objective.
 
-**Exponent Functions**\
+### Exponent Functions
 Two new exponent functions are added, namely: `math:power/integer` and `math:power/score`. `math:power/integer` takes two input parameters, `$(base_score)` and `$(exponent)`.
 
-**Absolute Value**\
+### Absolute Value
 The function `math:absolute_value` is added, that simply makes the input score positive, if it is negative. It takes one input parameter, `$(score)`. This is extremely trivial code, but I found it nice to have a shorthand.
 
-**Digit Counter**\
+### Digit Counter
 The function `math:digit_counter` is added, which counts the number of digits of the input score and returns it to a specified output score. It takes two input parameters: `$(input_score)` and `$(output_score)`. The number of digits in `$(input_score)` is written to `$(output_score)`.
 
 Note: An input score with a value of 0 will still return 1 digit.
 
-**Even Function**\
+### Even Function
 The function `math:even` is added, which will round the input score to an even number, if it is not already even. It takes two input parameters: `$(score)` and `$(sign)`. `$(score)` is the name of the scoreboard objective that will be modified, and `$(sign)` is a string that must be either `"-"` or `"+"`. This parameter specifies whether the function will round up or down.
 
-**Chance Functions**\
+### Chance Functions
 Two chance functions are added: `math:chance/percentage` and `math:chance/score`. These have a random chance to trigger your specified function, and the probability of the function triggering depends on your input.
 
 `math:chance/percentage` takes two inputs: `$(value)` and `$(function)`. `$(value)` is a float from 0.00 to 1.00, which determines the likelihood of `$(function)` triggering. `$(function)` should be the name of a function, obviously.
