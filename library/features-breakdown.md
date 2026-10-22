@@ -462,19 +462,21 @@ The Math module introduces a variety of functions designed to make score manipul
 ### Rounding Functions
 The Rounding sub-module is used to increase precision of scores when they're divided. By default, Minecraft will always round quotients of two scores down to the nearest integer. However, the Rounding module will properly round these values instead of rounding them down every time.
 
-The Round module includes the following functions:\
-    - `math:round/int`
-    - `math:round/score`
-    - `math:round/up/int`
-    - `math:round/up/score`
-    - `math:round/down/int`
-    - `math:round/down/score`\
+The Round module includes the following functions:
+- `math:round/int`
+- `math:round/score`
+- `math:round/up/int`
+- `math:round/up/score`
+- `math:round/down/int`
+- `math:round/down/score`
+
 These functions ONLY round a number to the nearest multiple of the specified round value. They all take two input parameters: `$(score)` and `$(round)`. For the "int" functions, `$(round)` should be an integer, and for the "score" functions `$(round)` should be a scoreboard objective. `$(score)` is rounded to the nearest multiple of `$(round)`. You can also choose to round up or down, using the "round/up" or "round/down" functions.
 
 ### Division Functions
-By default, when Minecraft is performing division that will result in a fractional value, it just drops the fractional part and rounds down to the nearest integer. The division functions allow for division that, instead, properly rounds the number, including rounding up. It includes two functions:\
-    - `math:divide/int`
-    - `math:divide/score`
+By default, when Minecraft is performing division that will result in a fractional value, it just drops the fractional part and rounds down to the nearest integer. The division functions allow for division that, instead, properly rounds the number, including rounding up. It includes two functions:
+- `math:divide/int`
+- `math:divide/score`
+
 These both take two input parameters: `$(score)` and `$(div)`. These functions round `$(score)` to the nearest multiple of `$(div)` AND THEN divide it by `$(div)`. For `math:divide/int`, `$(div)` should be an integer, and for `math:divide/score`, `$(div)` should be a scoreboard objective.
 
 ### Exponent Functions
