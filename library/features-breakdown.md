@@ -410,6 +410,26 @@ Weapon materials:
 `ss_lib:fetch/on_ground` fetches the entity's OnGround score, a boolean indicating whether or not the entity is on the ground. By default, this function is invoked every tick in `ss_lib:fetch_configuration`.
 </details>
 
+## Binary Dissection / Bitpacking
+SSL also introduces a module for "bitpacking": using an integer to store a bunch of true/false conditions by reading it as a binary number.
+
+What this does is allows you to store up to 32 boolean conditions, 0-31, in a single score, by adding a value to the score that represents an exponential multiple of 2. For example, if you want to set condition #10 and condition #14 to true, and leave all others false, the disambiguation value would be set to 17408 (2^10 + 2^14), which can only be created when those two conditions are true. The Binary Dissection file then dissects this value, reads that conditions #10 and #14 are true, and executes functions based on those files.
+
+Condition 31 is stored by making the dissection value negative.
+
+The function is stored at `ss_lib:binary/dissect`. It takes three inputs: `$(score)`, which refers to the score that will be read and dissected, `$(namespace_1)`, which is the first part of the executed functions' namespace, and `$(namespace_2)`, the second part. The `$(score)` input itself will not be changed, rather, it's copied over into the a score used for the dissection. A sample of the code is below:
+
+```$execute as @s[scores={generic_a=1..}] run function $(namespace_1)0$(namespace_2)```
+```scoreboard players remove @s[scores={generic_a=1..}] generic_a 1```
+
+This means that, if your score is over the exponential multiple of 2 (in this case, 2^0, which is 1), it runs a function with an ID based on the EXPONENT required to get to that number. So, this particular line of code runs a function with an ID of 0.
+
+This ID can be used a couple different ways. If you want to execute a whole function, for example, you can have a `$(namespace_1)` of `example:function/id_` and a `$(namespace_2)` that is just empty (`""`). This would execute the function `example:function/id_0` if condition #0 is true.
+
+You can also pass it as an input to another function, for example, with a `$(namespace_1)` of `example:function/boolean {id:` and a `$(namespace_2)` of `}`. This will execute the function `example:function/boolean {id:0}`.
+
+Conditions can be written to the disambiguation value by using the following function: `ss_lib:binary/assign`. It takes two inputs: `$(score)` and `$(id)`. `$(score)` is the score that will be written to, and `id` is a value from 0 to 31, which represents which condition will be written as true. Conditions are removed with the function `ss_lib:binary/unassign`. Assignment will only assign the condition if it is not already true, and unassign will only unassign if the condition is true. The function `ss_lib:binary/toggle` can be used to toggle conditions.
+
 ## Gamerule Module
 This is a system designed to simulate vanilla gamerules, allowing developers to set global gamerules that they can change at will, and reference when needed. This is a good way to keep track of backend settings that apply to the world at large.
 
