@@ -159,13 +159,13 @@ Elixir also adds a single gamerule (using the SSL gamerule module, of course): `
 To add your own status effects, you'll need to run two functions for each effect: `elixir:custom/load_status` and `elixir:custom/tick_status`. As the names indicate, `load_status` only needs to be run once, and it creates all the scores necessary to run your custom effect, and `tick_status` MUST be run on every tick (or the status timer will be inaccurate).
 
 `elixir:custom/load_status` takes two input parameters: `$(source)` and `$(status)`. `$(source)` should be the name of YOUR datapack, or a nickname, anything that will identify where the status is defined. For example, the premade statuses use `elixir` as the input for `$(source)`. `$(status)`, on the other hand, should be the name of the effect itself; for example, `lightweight` or `frostbite` or whatever.\
-If you want your status to have a maximum amplifier, you can use the function `elixir:custom/load_status_max_amplifier` instead.
+If you want your status to have a maximum amplifier, you can use the function `elixir:custom/load_status_max_amplifier` instead. This function takes an additional macro: `$(max_amplifier)`.
 
 The scores added are `$(source).$(status).duration`, `$(source).$(status).amplifier`, and `$(source).$(status).stored_amplifier`. You probably won't ever need to reference these yourself.
 
 IMPORTANT: Both of these input parameters must have valid characters for the purpose of creating scoreboard objectives. Essentially, no spaces, and no custom characters that you couldn't have in the name of another scoreboard objective.
 
-`elixir:custom/tick_status` takes four input parameters: `source`, `status`, `status_function`, and `expire_function`. `source` and `status` are used identically to how they're used in `elixir:custom/load_status`.\
+`elixir:custom/tick_status` takes four input parameters: `$(source)`, `$(status)`, `$(status_function)`, and `$(expire_function)`. `$(source)` and `$(status)` are used identically to how they're used in `elixir:custom/load_status`. Another function exists, which takes the same input parameters, called: `elixir:custom/tick_status_nonplayer`. This status should be run instead of the other if you plan for your status to be able to affect non-player entities AS WELL AS players.\
 `status_function` is the name of the function that contains the actual effects of your custom potion effect. For example, the premade status "lightweight" uses `elixir:status/lightweight/main` for its status function. The status function will be run on every tick for every entity that has an active application of your status.\
 Immediately before invoking the `status_function` function, Elixir assigns a score to the executing entity: `elixir.generic.amplifier`. This is equal to their current amplifier for that status, plus one. This value can be used as a score that can be referenced when applying the status' effects, and it can be freely modified as you see fit. It's re-set to the proper value immediately before every status function,
 
