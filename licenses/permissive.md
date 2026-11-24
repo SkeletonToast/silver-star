@@ -1,3 +1,4 @@
+# Silver Star Permissive License (SSL-P)
 This License dictates how this project and its code may be used.\
 Any project licensed under this license should be considered a Silver Star project.\
 Last updated 11/24/2026
