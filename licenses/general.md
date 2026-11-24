@@ -1,3 +1,4 @@
+# Silver Star General License (SSL-G)
 This License dictates how this project and its code may and may not be used. This License is subject to change without notice.\
 For the purposes of this License, a "Sister Project" is a project that includes code repurposed from this project.\
 Last updated 11/24/2026
