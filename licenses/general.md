@@ -1,6 +1,7 @@
 # Silver Star General License (SSL-G)
 This License dictates how this project and its code may and may not be used. This License is subject to change without notice.\
-For the purposes of this License, a "Sister Project" is a project that includes code repurposed from this project.\
+For the purposes of this License, a "Project Collection" is a curated group of mods or datapacks that are redistributed as a single bundle.\
+For the purposes of this License, a "Sister Project" is a project that includes code repurposed from this project. This does not necessarily include Project Collections.\
 Last updated 11/24/2026
 
 Copyright © 2026 SkeletonToast\
@@ -13,13 +14,15 @@ This License shall be included in all copies or substantial portions of this pro
 2) Any part of this project can be modified and used in ANY capacity, as long as the modified code is not redistributed.
    - This means that no permission or special rights are necessary if this code is modified or incorporated into a Sister Project that is NOT being redistributed.
    - This includes usage in multiplayer settings, including public settings where users do not have access to Sister Project's code.
-3) This project may be freely included in collections of mods or datapacks, as long as it remains distinct from other included projects.
+3) This project may be freely included in Project Collections, as long as it remains distinct from other included projects.
+   - This means that it must be presented as its own project, which is simply part of the Project Collection.
 4) Code from this project may be repurposed as part of a Sister Project, provided the terms of this License are adhered to.
 
 ## Usage Requirements
-5) Code from this project MAY NOT be used as part of any directly monetized project.
-   - All Sister Projects including code from this project must be offered, with no charge, to the general public, and all users must be afforded the same permissions as outlined above (clauses 1-3).
-   - "Directly monetized" specifically refers to projects where users must pay for access to the project. Things such as voluntary donations or advertisement revenue do not fall under this category.
+3) This project MAY NOT be directly monetized, in any capacity.
+   - "Directly monetized" specifically refers to contexts where users must pay for access to a project. Things such as voluntary donations or advertisement revenue are not included.
+   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License.
+   - This includes, but is not limited to, Project Collections, Sister Projects, and multiplayer servers.
 6) If code is included as part of a Sister Project, the same permissive rights as outlined above must be granted to ALL users of the Sister Project.
    - Inclusion of code from this project does not inherently grant this project's author any rights or authority over the Sister Project at large, but rights are retained in regards to this project's code.
 
