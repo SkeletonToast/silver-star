@@ -1,4 +1,4 @@
-# Silver Star Firm License (SSL-F)
+# Silver Star Restricted License (SSL-R)
 This License dictates how this project and its code may and may not be used. This License is subject to change without notice.\
 For the purposes of this License, a "Project Collection" is a curated group of mods or datapacks that are redistributed as a single bundle.\
 For the purposes of this License, a "Sister Project" is a project that includes code repurposed from this project. This does not necessarily include Project Collections.\
