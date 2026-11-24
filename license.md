@@ -22,8 +22,6 @@ This license shall be included in all copies or substantial portions of this pro
    - Inclusion of Silver Star code does not inherently grant SkeletonToast or the Silver Star team any rights or authority over the project at large, but rights are retained in regards to the Silver Star code.
 
 ## Exemptions
-- A special exemption is provided for the Silver Star Library project. This project may be modified, used, and redistributed in any capacity, provided the clauses under "Usage Requirements" are adhered to.
-  - If a standalone, modified version of the Silver Star Library is redistributed, it must include a clear, upfront link to the original Silver Star Library project page.
 - SkeletonToast and the Silver Star team reserve the right to prohibit any individual, group, server, or any other entity from using Silver Star code in a PUBLIC setting.
   - This is at the SOLE DISCRETION of SkeletonToast and the Silver Star team.
 - SkeletonToast and the Silver Star team reserve the right to override any parts of this License, or introduce additional usage requirements, on an individual basis.
