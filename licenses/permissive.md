@@ -3,7 +3,7 @@ This License dictates how this project and its code may be used.\
 Last updated 11/24/2026
 
 Copyright © 2026 SkeletonToast\
-SkeletonToast retains all trademark and patent rights to the Silver Star code.
+The author retains all trademark and patent rights to the original code in this project.
 
 This License shall be included in all copies or substantial portions of this project.
 
