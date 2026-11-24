@@ -23,9 +23,10 @@ This License shall be included in all copies or substantial portions of this pro
 5) This project, or any portion of this project, MAY NOT be redistributed as part of a Sister Project.
    - This does not include redistribution as part of a Project Collection.
    - Exceptions may be granted at the sole discretion of this project's author(s).
-6) This project, or any portion of this project, MAY NOT be used as part of any directly monetized public setting, Sister Project, or Project Collection.
-   - "Directly monetized" specifically refers to projects where users must pay for access to the project. Things such as voluntary donations or advertisement revenue do not fall under this category.
-   - Microtransactions, transactions of real-life currency for in-game goods or services, are considered direct monetization for the purposes of this License.
+3) This project MAY NOT be directly monetized, in any capacity.
+   - "Directly monetized" specifically refers to contexts where users must pay for access to a project. Things such as voluntary donations or advertisement revenue are not included.
+   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License.
+   - This includes, but is not limited to, Project Collections and multiplayer servers.
 
 ## Exemptions
 - The author of this project reserves the right to override any parts of this License, or introduce additional usage requirements, on an individual basis.
