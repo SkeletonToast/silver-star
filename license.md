@@ -1,27 +1,27 @@
-This License dictates how all Silver Star projects and their code may and may not be used. This license is subject to change without notice.
-Any project licensed under this license should be considered a Silver Star project.
+This License dictates how all Silver Star projects and their code may and may not be used. This license is subject to change without notice.\
+Any project licensed under this license should be considered a Silver Star project.\
 Last updated 11/24/2026
 
-Copyright © 2026 SkeletonToast
+Copyright © 2026 SkeletonToast\
 SkeletonToast retains all trademark and patent rights to the Silver Star code.
 
 This license shall be included in all copies or substantial portions of this project.
 
-Permitted Uses:
+## Permitted Uses
 1) Any part of the Silver Star project may be used, unconditionally, in personal, single-player settings. This includes unlimited modification to the codebase.
 2) Any part of the Silver Star project can be modified and used in ANY capacity, as long as the modified code is not redistributed.
-  2a) This means that no permission or special rights are necessary if this code is modified or incorporated into a larger project that is NOT being redistributed. This includes usage in multiplayer settings.
+   - This means that no permission or special rights are necessary if this code is modified or incorporated into a larger project that is NOT being redistributed. This includes usage in multiplayer settings.
 3) Code may be repurposed as part of a separate project, as long as it is not presented as original work of this separate project's developer(s).
-  3a) No other disclaimer is required.
+   - No other disclaimer is required.
 
-Usage Requirements:
+## Usage Requirements
 4) Code from any Silver Star project MAY NOT be used as part of any directly monetized project.
-  4a) Any project including Silver Star code must be offered, with no charge, to the general public, and all users must be afforded the same permissions as outlined above (clauses 1-3).
-  4b) "Directly monetized" specifically refers to projects where users must pay for access to the project. Things such as voluntary donations or advertisement revenue do not fall under this category.
+   - Any project including Silver Star code must be offered, with no charge, to the general public, and all users must be afforded the same permissions as outlined above (clauses 1-3).
+   - "Directly monetized" specifically refers to projects where users must pay for access to the project. Things such as voluntary donations or advertisement revenue do not fall under this category.
 5) If Silver Star code is included as part of a separate project, the same permissive rights as outlined above (clauses 1-3) must be granted to users of the separate project.
-  5a) Inclusion of Silver Star code does not inherently grant SkeletonToast or the Silver Star team any rights or authority over the project at large, but rights are retained in regards to the Silver Star code.
+   - Inclusion of Silver Star code does not inherently grant SkeletonToast or the Silver Star team any rights or authority over the project at large, but rights are retained in regards to the Silver Star code.
 
-Exemptions:
+## Exemptions
 - A special exemption is provided for the Silver Star Library project. This project may be modified, used, and redistributed in any capacity, provided the clauses under "Usage Requirements" are adhered to.
   - If a standalone, modified version of the Silver Star Library is redistributed, it must include a clear, upfront link to the original Silver Star Library project page.
 - SkeletonToast and the Silver Star team reserve the right to prohibit any individual, group, server, or any other entity from using Silver Star code in a PUBLIC setting.
