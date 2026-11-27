@@ -31,4 +31,5 @@ This License shall be included in all copies or substantial portions of this pro
 
 ## Exemptions
 - The author of this project reserves the right to override any parts of this License, or introduce additional usage requirements, on an individual basis.
+  - This includes the right to prevent any individual, organization, server, or other entity from using any part of this project.
   - Should this right be exercised by the author, affected parties will be notified.
