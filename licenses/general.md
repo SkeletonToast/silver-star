@@ -27,6 +27,6 @@ This License shall be included in all copies or substantial portions of this pro
    - Inclusion of code from this project does not inherently grant this project's author any rights or authority over the Sister Project at large, but rights are retained in regards to this project's code.
 
 ## Exemptions
-- The author of this project reserves the right to prohibit any individual, group, server, or any other entity from using code from this project in a PUBLIC setting.
 - The author of this project reserves the right to override any parts of this License, or introduce additional usage requirements, on an individual basis.
+  - This includes the right to prevent any individual, organization, server, or other entity from using any part of this project.
   - Should this right be exercised by the author, affected parties will be notified.
