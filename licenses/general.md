@@ -21,7 +21,7 @@ This License shall be included in all copies or substantial portions of this pro
 ## Usage Requirements
 5) This project MAY NOT be directly monetized, in any capacity.
    - "Directly monetized" specifically refers to contexts where users must pay for access to a project. Things such as voluntary donations or advertisement revenue are not included.
-   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License.
+   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License. No setting, server, or other public context which uses any part of this project may facilitate microtransactions.
    - This includes, but is not limited to, Project Collections, Sister Projects, and multiplayer servers.
 6) If code is included as part of a Sister Project, the same permissive rights as outlined above must be granted to ALL users of the Sister Project.
    - Inclusion of code from this project does not inherently grant this project's author any rights or authority over the Sister Project at large, but rights are retained in regards to this project's code.
