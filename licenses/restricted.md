@@ -2,7 +2,7 @@
 This License dictates how this project and its code may and may not be used. This License is subject to change without notice.\
 For the purposes of this License, a "Project Collection" is a curated group of mods or datapacks that are redistributed as a single bundle.\
 For the purposes of this License, a "Sister Project" is a project that includes code repurposed from this project. This does not necessarily include Project Collections.\
-Last updated 11/24/2026
+Last updated 11/25/2026
 
 Copyright © 2026 SkeletonToast\
 The author retains all trademark and patent rights to the original code in this project.
@@ -26,7 +26,7 @@ This License shall be included in all copies or substantial portions of this pro
    - Exceptions may be granted at the sole discretion of this project's author(s).
 7) This project MAY NOT be directly monetized, in any capacity.
    - "Directly monetized" specifically refers to contexts where users must pay for access to a project. Things such as voluntary donations or advertisement revenue are not included.
-   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License.
+   - Any transactions of real-life currency for in-game goods or services (including "microtransactions") are considered direct monetization for the purposes of this License. No setting, server, or other public context which uses any part of this project may facilitate microtransactions.
    - This includes, but is not limited to, Project Collections and multiplayer servers.
 
 ## Exemptions
